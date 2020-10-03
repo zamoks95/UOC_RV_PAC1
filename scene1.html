@@ -5,23 +5,122 @@
     <meta name="description" content="UOC Realitat Virtual - PAC 1" />
     <meta name="author" content="Sergi Zamora <sergi.zamora.95@gmail.com>" />
     <link rel="icon" href="favicon.png" />
-  </head>
-  <body>
-    <!-- Scene - Start -->
-    <a-scene environment="
-    preset: forest; 
-    seed:40; 
-    skyType: atmosphere; 
-    flatShading: true; 
-    ground: canyon; 
-    playArea: 1.15; 
-    groundYScale:80;
-    "></a-scene>
-    <!-- Scene - End -->
-
     <!-- Scripts - Start -->
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
     <!-- Scripts - End -->
+  </head>
+  <body>
+    <!-- Scene - Start -->
+    <a-scene environment="preset: forest; seed:40; skyType: atmosphere; flatShading: false; ground: canyon; playArea: 1.15; groundYScale:80;">
+    <!-- Assets - Start -->
+      <a-assets>
+        <img id="launchpad-square" src="recursos/assets/textures/launchpad-square.jpg">
+        <img id="launchpad-circle" src="recursos/assets/textures/launchpad-circle.jpg">
+        <img id="fence-base" src="recursos/assets/textures/fence-base.jpg">
+        <img id="fence-sphere" src="recursos/assets/textures/fence-sphere.jpg">
+        <img id="fence-support" src="recursos/assets/textures/fence-support.jpg">
+        <img id="fence-wall" src="recursos/assets/textures/fence-wall.jpg">
+      </a-assets>
+      <!-- Assets - End -->
+
+      <!-- Launching Pad - Start -->
+      <a-box depth="7.5" height="1" width="7.5" position="0 0 -10" src="#launchpad-square"></a-box>
+      <a-cylinder height="1.25" radius="3"  position="0 0 -10" src="#launchpad-circle"></a-cylinder>
+      <!-- Launching Pad - End -->
+
+      <!-- Fence - Start -->
+      <!-- Stick Front/Left -->
+      <a-cylinder src="#fence-base" height="0.5" radius="0.5"  position="-5 0 -5"></a-cylinder>
+      <a-cylinder src="#fence-support" height="2.5" radius="0.10"  position="-5 0 -5"></a-cylinder>
+      <a-sphere src="#fence-sphere" radius="0.25" position="-5 1.25 -5"></a-sphere>
+      <!-- Stick Front/Right -->
+      <a-cylinder src="#fence-base" height="0.5" radius="0.5"  position="5 0 -5"></a-cylinder>
+      <a-cylinder src="#fence-support" height="2.5" radius="0.10"  position="5 0 -5"></a-cylinder>
+      <a-sphere src="#fence-sphere" radius="0.25" position="5 1.25 -5"></a-sphere>
+      <!-- Stick Back/Left -->
+      <a-cylinder src="#fence-base" height="0.5" radius="0.5"  position="-5 0 -15"></a-cylinder>
+      <a-cylinder src="#fence-support" height="2.5" radius="0.10"  position="-5 0 -15"></a-cylinder>
+      <a-sphere src="#fence-sphere" radius="0.25" position="-5 1.25 -15"></a-sphere>
+      <!-- Stick Back/Right -->
+      <a-cylinder src="#fence-base" height="0.5" radius="0.5"  position="5 0 -15"></a-cylinder>
+      <a-cylinder src="#fence-support" height="2.5" radius="0.10"  position="5 0 -15"></a-cylinder>
+      <a-sphere src="#fence-sphere" radius="0.25" position="5 1.25 -15"></a-sphere>
+      <!-- Wall Left -->
+      <a-box src="#fence-wall" repeat="20 1" depth="10" height="0.25w" width="0.15" position="-5 1.25w -10"></a-box>
+      <!-- Wall Right -->
+      <a-box src="#fence-wall" repeat="20 1" depth="10" height="0.25w" width="0.15" position="5 1.25w -10"></a-box>
+      <!-- Wall Back -->
+      <a-box src="#fence-wall" repeat="20 1" depth="0.15" height="0.25w" width="10" position="0 1.25w -15"></a-box>
+      <!-- Wall Front -->
+      <a-box src="#fence-wall" repeat="10 1" depth="0.15" height="0.25w" width="4.75" position="-2.5 1.25w -5"></a-box>
+      <a-box src="#fence-wall" repeat="10 1" depth="0.15" height="0.25w" width="4.75" position="2.5 1.25w -5"></a-box>
+      <!-- Fence - End -->
+
+      <!-- Rocket - Start -->
+      <a-assets>
+        <a-asset-item id="rocket-body" src="recursos/assets/objects/rocket/rocket-body.obj"></a-asset-item>
+        <a-asset-item id="rocket-cylinders" src="recursos/assets/objects/rocket/rocket-cylinders.obj"></a-asset-item>
+        <a-asset-item id="rocket-frame" src="recursos/assets/objects/rocket/rocket-frame.obj"></a-asset-item>
+        <a-asset-item id="rocket-points" src="recursos/assets/objects/rocket/rocket-points.obj"></a-asset-item>
+        <a-asset-item id="rocket-window" src="recursos/assets/objects/rocket/rocket-window.obj"></a-asset-item>
+      </a-assets>
+      <a-entity obj-model="obj: #rocket-body;"
+	  	material="color: #ad141c; opacity: 1.0"
+      position="0 2.25 -10"
+      scale="1.75 1.75 1.75"
+	  	rotation="0 270 0">
+      </a-entity>
+      <a-entity obj-model="obj: #rocket-cylinders;"
+	  	material="color: #494949; opacity: 1.0"
+	  	position="0 2.25 -10"
+      scale="1.75 1.75 1.75"
+	  	rotation="0 270 0">
+      </a-entity>
+      <a-entity obj-model="obj: #rocket-frame;"
+	  	material="color: #494949; opacity: 1.0"
+	  	position="0 2.25 -10"
+      scale="1.75 1.75 1.75"
+	  	rotation="0 270 0">
+      </a-entity>
+      <a-entity obj-model="obj: #rocket-points;"
+	  	material="color: #1f2125; opacity: 1.0"
+	  	position="0 2.25 -10"
+      scale="1.75 1.75 1.75"
+	  	rotation="0 270 0">
+      </a-entity>
+      <a-entity obj-model="obj: #rocket-window;"
+	  	material="color: #248da7; opacity: 1.0"
+	  	position="0 2.25 -10"
+      scale="1.75 1.75 1.75"
+      rotation="0 270 0">
+      </a-entity>
+      <!-- Rocket - End -->
+
+      <!-- Global Light - Start -->
+      <a-entity light="type: point; color: #BBB"></a-entity>
+      <!-- Global Light - End -->
+
+      <!-- Tomato - Start -->
+      <a-assets>
+        <a-asset-item id="tomato" src="recursos/assets/objects/tomato/10208_TomatoBeefSteak_v1.obj"></a-asset-item>
+      </a-assets>
+      <a-entity obj-model="obj: #tomato;"
+	  	material="color: #00FF00; opacity: 1.0"
+      position="12 0 -6"
+      scale="0.5 0.5 0.5"
+	  	rotation="-90 0 0">
+      </a-entity>
+      <!-- Tomato - End -->
+
+      <!-- Button - Start -->
+      <a-box depth="2" height="1" width="0.2" position="-3 1.5 -3" rotation="0 -45 0" src="#launchpad-square"></a-box>
+      <a-text value="Look Me to launch" position="-3.5 2.25 -2.2a5" rotation="0 45 0"></a-text>
+      <!-- Button - End -->
+
+    </a-scene>
+    <!-- Scene - End -->
+
+   
   </body>
 </html>
