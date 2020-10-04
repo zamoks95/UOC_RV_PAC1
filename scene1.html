@@ -47,14 +47,14 @@
       <a-cylinder src="#fence-support" height="2.5" radius="0.10"  position="5 0 -15"></a-cylinder>
       <a-sphere src="#fence-sphere" radius="0.25" position="5 1.25 -15"></a-sphere>
       <!-- Wall Left -->
-      <a-box src="#fence-wall" repeat="20 1" depth="10" height="0.25w" width="0.15" position="-5 1.25w -10"></a-box>
+      <a-box src="#fence-wall" repeat="20 1" depth="10" height="0.25" width="0.15" position="-5 1.25 -10"></a-box>
       <!-- Wall Right -->
-      <a-box src="#fence-wall" repeat="20 1" depth="10" height="0.25w" width="0.15" position="5 1.25w -10"></a-box>
+      <a-box src="#fence-wall" repeat="20 1" depth="10" height="0.25" width="0.15" position="5 1.25 -10"></a-box>
       <!-- Wall Back -->
-      <a-box src="#fence-wall" repeat="20 1" depth="0.15" height="0.25w" width="10" position="0 1.25w -15"></a-box>
+      <a-box src="#fence-wall" repeat="20 1" depth="0.15" height="0.25" width="10" position="0 1.25 -15"></a-box>
       <!-- Wall Front -->
-      <a-box src="#fence-wall" repeat="10 1" depth="0.15" height="0.25w" width="4.75" position="-2.5 1.25w -5"></a-box>
-      <a-box src="#fence-wall" repeat="10 1" depth="0.15" height="0.25w" width="4.75" position="2.5 1.25w -5"></a-box>
+      <a-box src="#fence-wall" id="fence-wall-left" repeat="10 1" depth="0.15" height="0.25" width="4.75" rotation="0 0 90" position="-5 3.75 -5"></a-box>
+      <a-box src="#fence-wall" id="fence-wall-right" repeat="10 1" depth="0.15" height="0.25" width="4.75" rotation="0 0 -90" position="5 3.75 -5"></a-box>
       <!-- Fence - End -->
 
       <!-- Rocket - Start -->
@@ -65,36 +65,36 @@
         <a-asset-item id="rocket-points" src="recursos/assets/objects/rocket/rocket-points.obj"></a-asset-item>
         <a-asset-item id="rocket-window" src="recursos/assets/objects/rocket/rocket-window.obj"></a-asset-item>
       </a-assets>
-      <a-entity obj-model="obj: #rocket-body;"
+      <a-entity id="rocket-body-obj"
+      obj-model="obj: #rocket-body;"
 	  	material="color: #ad141c; opacity: 1.0"
       position="0 2.25 -10"
       scale="1.75 1.75 1.75"
-	  	rotation="0 270 0">
-      </a-entity>
-      <a-entity obj-model="obj: #rocket-cylinders;"
+      rotation="0 270 0"></a-entity>
+      <a-entity id="rocket-cylinders-obj"
+      obj-model="obj: #rocket-cylinders;"
 	  	material="color: #494949; opacity: 1.0"
 	  	position="0 2.25 -10"
       scale="1.75 1.75 1.75"
-	  	rotation="0 270 0">
-      </a-entity>
-      <a-entity obj-model="obj: #rocket-frame;"
+      rotation="0 270 0"></a-entity>
+      <a-entity id="rocket-frame-obj"
+      obj-model="obj: #rocket-frame;"
 	  	material="color: #494949; opacity: 1.0"
 	  	position="0 2.25 -10"
       scale="1.75 1.75 1.75"
-	  	rotation="0 270 0">
-      </a-entity>
-      <a-entity obj-model="obj: #rocket-points;"
+      rotation="0 270 0"></a-entity>
+      <a-entity id="rocket-points-obj"
+      obj-model="obj: #rocket-points;"
 	  	material="color: #1f2125; opacity: 1.0"
 	  	position="0 2.25 -10"
       scale="1.75 1.75 1.75"
-	  	rotation="0 270 0">
-      </a-entity>
-      <a-entity obj-model="obj: #rocket-window;"
+      rotation="0 270 0"></a-entity>
+      <a-entity id="rocket-window-obj"
+      obj-model="obj: #rocket-window;"
 	  	material="color: #248da7; opacity: 1.0"
 	  	position="0 2.25 -10"
       scale="1.75 1.75 1.75"
-      rotation="0 270 0">
-      </a-entity>
+      rotation="0 270 0"></a-entity>
       <!-- Rocket - End -->
 
       <!-- Global Light - Start -->
@@ -114,13 +114,60 @@
       <!-- Tomato - End -->
 
       <!-- Button - Start -->
-      <a-box depth="2" height="1" width="0.2" position="-3 1.5 -3" rotation="0 -45 0" src="#launchpad-square"></a-box>
-      <a-text value="Look Me to launch" position="-3.5 2.25 -2.2a5" rotation="0 45 0"></a-text>
+      <a-box id="button-launch" depth="2" height="1" width="0.2" position="-3 1.5 -3" rotation="0 -45 0" src="#launchpad-square"></a-box>
+      <a-text value="Click Me to Launch" position="-3.5 2.25 -2.25" rotation="0 45 0"></a-text>
       <!-- Button - End -->
+
+      <!-- Cursor & Camera - Start -->
+      <a-camera id="camera">
+        <a-cursor color="#66ffff"></a-cursor>
+      </a-camera>
+      <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+      <!-- Cursor & Camera - End -->
 
     </a-scene>
     <!-- Scene - End -->
-
-   
+    <!-- Scripts - Start -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function(){
+        $("#button-launch").click(function(){
+          $("#camera").append('<a-sound src="src: url(recursos/assets/sounds/beepConfirmation.wav)" autoplay="true" volume="2"></a-sound>');
+          setTimeout(() => {
+            animation_close_walls();
+          }, 1000);
+          setTimeout(() => {
+            animation_rocket()
+          }, 9000);
+        });
+      });
+      function animation_rocket(){
+        var positionAnimation = '<a-animation attribute="position" delay="10000" dur="3000" to="0 250 -10"></a-animation>';
+        var scaleAnimation = '<a-animation attribute="scale" dur="250" to="1.9 1.9 1.9" direction="alternate" repeat="40"></a-animation>';
+        var finalAnimation = positionAnimation + scaleAnimation;
+        $("#rocket-body-obj").append(finalAnimation);
+        $("#rocket-cylinders-obj").append(finalAnimation);
+        $("#rocket-frame-obj").append(finalAnimation);
+        $("#rocket-points-obj").append(finalAnimation);
+        $("#rocket-window-obj").append(finalAnimation);
+        $("#camera").append('<a-sound src="src: url(recursos/assets/sounds/countdown.wav)" autoplay="true" volume="1"></a-sound>');
+        $("#rocket-body-obj").append('<a-sound src="src: url(recursos/assets/sounds/motor.wav)" autoplay="true" volume="5"></a-sound>')
+        setTimeout(() => {
+          $("#rocket-body-obj").append('<a-sound src="src: url(recursos/assets/sounds/motorStart.wav)" autoplay="true" volume="10"></a-sound>')
+        }, 7500);
+      }
+      function animation_close_walls(){
+        var wallLeftAnimation = "";
+        var wallRightAnimation = "";
+        wallLeftAnimation += '<a-animation attribute="rotation" dur="8000" from="rotation=0 0 90" to="0 0 0"></a-animation>';
+        wallLeftAnimation += '<a-animation attribute="position" dur="8000" from="-5 3.75 -5" to="-2.5 1.25 -5"></a-animation>';
+        wallRightAnimation += '<a-animation attribute="rotation" dur="8000" from="0 0 -90" to="0 0 0"></a-animation>';
+        wallRightAnimation += '<a-animation attribute="position" dur="8000" from="5 3.75 -5" to="2.5 1.25 -5"></a-animation>';
+        $("#camera").append('<a-sound src="src: url(recursos/assets/sounds/warningBeep.wav)" autoplay="true" volume="2"></a-sound>');
+        $("#fence-wall-left").append(wallLeftAnimation);
+        $("#fence-wall-right").append(wallRightAnimation);
+      }
+    </script>
+   <!-- Scripts - End -->
   </body>
 </html>
