@@ -5,15 +5,22 @@
     <meta name="description" content="UOC Realitat Virtual - PAC 1" />
     <meta name="author" content="Sergi Zamora <sergi.zamora.95@gmail.com>" />
     <link rel="icon" href="favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="recursos/styles/main.css">
   </head>
   <body>
-    <!-- Scene - Start -->
-    <a-scene environment="preset: default"></a-scene>
-    <!-- Scene - End -->
-
-    <!-- Scripts - Start -->
-    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
-    <!-- Scripts - End -->
+    <div id="pagina">
+      <div id="header">
+        <h1>VR A-FRAME</h1>
+      </div>
+      <div id="VRarea">
+        <iframe id="vr1" src="scene1.html"></iframe>
+        <div id="go" onClick="javascript:document.location='scene1.html'"></div>
+      </div>
+      <div id="footer">
+        <p>Clicar les ulleres per entrar a l'escena</p>
+      </div>		
+    </div>
+  
   </body>
 </html>

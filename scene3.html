@@ -8,7 +8,26 @@
   </head>
   <body>
     <!-- Scene - Start -->
-    <a-scene environment="preset: default"></a-scene>
+    <a-scene environment="preset: egypt">
+
+      <a-assets>
+        <img id="link-rocket" src="recursos/assets/textures/RocketWorld.PNG">
+        <img id="link-japan" src="recursos/assets/textures/japan.PNG">
+      </a-assets>
+
+      <!-- Links - Start -->
+      <a-link href="scene1.html" title="Go to Rocket" image="#link-rocket" peekMode="false" position="10 2 -0" rotation="0 -90 0"></a-link>
+      <a-link href="scene3.html" title="Go to Japan" image="#link-japan" peekMode="false" position="10 2 4" rotation="0 90 0"></a-link>
+      <!-- Links - End -->
+
+      <!-- Cursor & Camera - Start -->
+      <a-camera id="camera">
+        <a-cursor color="#66ffff"></a-cursor>
+      </a-camera>
+      <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+      <!-- Cursor & Camera - End -->
+      
+    </a-scene>
     <!-- Scene - End -->
 
     <!-- Scripts - Start -->
