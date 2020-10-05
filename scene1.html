@@ -35,8 +35,8 @@
           src="recursos/assets/textures/fence-support.jpg"
         />
         <img id="fence-wall" src="recursos/assets/textures/fence-wall.jpg" />
-        <img id="link-japan" src="recursos/assets/textures/japan.PNG" />
-        <img id="link-egypt" src="recursos/assets/textures/Egypt.PNG" />
+        <img id="link-japan" src="recursos/assets/textures/japan.jpg" />
+        <img id="link-egypt" src="recursos/assets/textures/Egypt.jpg" />
       </a-assets>
       <!-- Assets - End -->
 
@@ -248,22 +248,139 @@
       <a-entity light="type: point; color: #BBB"></a-entity>
       <!-- Global Light - End -->
 
-      <!-- Tomato - Start -->
+      <!-- Car - Start -->
       <a-assets>
         <a-asset-item
-          id="tomato"
-          src="recursos/assets/objects/tomato/10208_TomatoBeefSteak_v1.obj"
+          id="car-BackLights"
+          src="recursos/assets/objects/car/car-BackLights.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="car-BackLightsOrange"
+          src="recursos/assets/objects/car/car-BackLightsOrange.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="car-BackLightsRed"
+          src="recursos/assets/objects/car/car-BackLightsRed.obj"
+        ></a-asset-item
+        ><a-asset-item
+          id="car-Body"
+          src="recursos/assets/objects/car/car-Body.obj"
+        ></a-asset-item
+        ><a-asset-item
+          id="car-FrontOrange"
+          src="recursos/assets/objects/car/car-FrontOrange.obj"
+        ></a-asset-item
+        ><a-asset-item
+          id="car-FrontWhite"
+          src="recursos/assets/objects/car/car-FrontWhite.obj"
+        ></a-asset-item
+        ><a-asset-item
+          id="car-Wheels"
+          src="recursos/assets/objects/car/car-Wheels.obj"
+        ></a-asset-item
+        ><a-asset-item
+          id="car-WheelsInner"
+          src="recursos/assets/objects/car/car-WheelsInner.obj"
+        ></a-asset-item
+        ><a-asset-item
+          id="car-WheelsProtector"
+          src="recursos/assets/objects/car/car-WheelsProtector.obj"
+        ></a-asset-item
+        ><a-asset-item
+          id="car-Window"
+          src="recursos/assets/objects/car/car-Window.obj"
         ></a-asset-item>
       </a-assets>
       <a-entity
-        obj-model="obj: #tomato;"
+        obj-model="obj: #car-BackLights"
         material="color: #00FF00; opacity: 1.0"
-        position="12 0 -6"
-        scale="0.5 0.5 0.5"
-        rotation="-90 0 0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
       >
       </a-entity>
-      <!-- Tomato - End -->
+      <a-entity
+        obj-model="obj: #car-BackLightsOrange"
+        material="color: #fec10b; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      <a-entity
+        obj-model="obj: #car-Body"
+        material="color: #c2c2c2; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      <a-entity
+        obj-model="obj: #car-BackLightsRed"
+        material="color: #b72201; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      <a-entity
+        obj-model="obj: #car-FrontOrange"
+        material="color: #fec10b; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      
+      <a-entity
+        obj-model="obj: #car-Wheels"
+        material="color: #0d0d0d; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      <a-entity
+        obj-model="obj: #car-FrontWhite"
+        material="color: #FFFFFF; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      <a-entity
+        obj-model="obj: #car-WheelsInner"
+        material="color: #1c1c1c; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      <a-entity
+        obj-model="obj: #car-WheelsProtector"
+        material="color: #1c1c1c; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      <a-entity
+        obj-model="obj: #car-BackLights"
+        material="color: #b72201; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      <a-entity
+        obj-model="obj: #car-Window"
+        material="color: #666666; opacity: 1.0"
+        position="12 0 -5"
+        scale="0.7 0.7 0.7"
+        rotation="0 0 0"
+      >
+      </a-entity>
+      <!-- Car - End -->
 
       <!-- Button - Start -->
       <a-box
@@ -319,7 +436,7 @@
       $(document).ready(function () {
         $("#button-launch").click(function () {
           $("#camera").append(
-            '<a-sound src="src: url(recursos/assets/sounds/beepConfirmation.wav)" autoplay="true" volume="2"></a-sound>'
+            '<a-sound src="src: url(recursos/assets/sounds/beepConfirmation.mp3)" autoplay="true" volume="2"></a-sound>'
           );
           setTimeout(() => {
             animation_close_walls();
@@ -341,14 +458,14 @@
         $("#rocket-points-obj").append(finalAnimation);
         $("#rocket-window-obj").append(finalAnimation);
         $("#camera").append(
-          '<a-sound src="src: url(recursos/assets/sounds/countdown.wav)" autoplay="true" volume="1"></a-sound>'
+          '<a-sound src="src: url(recursos/assets/sounds/countdown.mp3)" autoplay="true" volume="1"></a-sound>'
         );
         $("#rocket-body-obj").append(
-          '<a-sound src="src: url(recursos/assets/sounds/motor.wav)" autoplay="true" volume="5"></a-sound>'
+          '<a-sound src="src: url(recursos/assets/sounds/motor.mp3)" autoplay="true" volume="5"></a-sound>'
         );
         setTimeout(() => {
           $("#rocket-body-obj").append(
-            '<a-sound src="src: url(recursos/assets/sounds/motorStart.wav)" autoplay="true" volume="10"></a-sound>'
+            '<a-sound src="src: url(recursos/assets/sounds/motorStart.mp3)" autoplay="true" volume="10"></a-sound>'
           );
         }, 7500);
       }
@@ -364,7 +481,7 @@
         wallRightAnimation +=
           '<a-animation attribute="position" dur="8000" from="5 3.75 -5" to="2.5 1.25 -5"></a-animation>';
         $("#camera").append(
-          '<a-sound src="src: url(recursos/assets/sounds/warningBeep.wav)" autoplay="true" volume="2"></a-sound>'
+          '<a-sound src="src: url(recursos/assets/sounds/warningBeep.mp3)" autoplay="true" volume="2"></a-sound>'
         );
         $("#fence-wall-left").append(wallLeftAnimation);
         $("#fence-wall-right").append(wallRightAnimation);
